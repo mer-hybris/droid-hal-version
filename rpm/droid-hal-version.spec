@@ -25,13 +25,13 @@ BuildRequires: droid-hal
 BuildRequires: droid-hal-configs
 BuildRequires: gstreamer0.10-droidcamsrc
 BuildRequires: gstreamer0.10-omx
-BuildRequires: libhardware
+BuildRequires: pkgconfig(libhardware)
 BuildRequires: mce-plugin-libhybris
 BuildRequires: ngfd-plugin-droid-vibrator
 BuildRequires: pulseaudio-modules-droid
 BuildRequires: qt5-feedback-haptics-droid-vibrator
 BuildRequires: qt5-qpa-hwcomposer-plugin
-BuildRequires: qtscenegraph-adaptation-droid
+BuildRequires: qtscenegraph-adaptation
 BuildRequires: hybris-libsensorfw-qt5
 
 %description
