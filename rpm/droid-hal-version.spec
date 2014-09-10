@@ -74,8 +74,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}
 echo Creating hw-release
 # based on http://www.freedesktop.org/software/systemd/man/os-release.html
 cat > %{buildroot}/%{_sysconfdir}/droid-release <<EOF
-# This file is copied as both hw-release (analogous to os-release)
-# and hw-release.vars for use at build time
+# This file is copied as hw-release (analogous to os-release)
 MER_HA_DEVICE=$MER_HA_DEVICE
 MER_HA_VENDOR=$MER_HA_VENDOR
 VERSION="%{version}.%{_obs_build_count} %{_version_appendix}"
