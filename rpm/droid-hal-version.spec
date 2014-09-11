@@ -14,13 +14,13 @@
 %define _version_appendix (%{_target_cpu},%{_build_flavour})
 %endif
 
-Name: droid-hal-version
-Version:    0.0.1
+Name:    droid-hal-version
+Version: 0.0.1
 Release: 1
-Summary: SailfishOS HW Adaptation droid %{version}.%{_obs_build_count} (%{_target_cpu},%{_build_flavour})
-Group: System/Libraries
-License: TBD
-Source: %{name}-%{version}.tar.gz
+Summary: SailfishOS HW Adaptation droid version package %{version}.%{_obs_build_count} (%{_target_cpu},%{_build_flavour})
+Group:   System/Libraries
+License: BSD-3-Clause
+Source:  %{name}-%{version}.tar.gz
 BuildRequires: droid-hal
 BuildRequires: droid-hal-configs
 BuildRequires: gstreamer0.10-droidcamsrc
@@ -35,7 +35,7 @@ BuildRequires: qtscenegraph-adaptation
 BuildRequires: hybris-libsensorfw-qt5
 
 %description
-SailfishOS Hw Adaptation droid (%{version}.%{_obs_build_count}) for %{_target_cpu} platform.
+SailfishOS HW Adaptation droid version/umbrella package (%{version}.%{_obs_build_count}) for %{_target_cpu} platform.
 
 %files
 %defattr(-,root,root,-)
