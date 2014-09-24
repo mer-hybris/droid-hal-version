@@ -23,8 +23,6 @@ License: BSD-3-Clause
 Source:  %{name}-%{version}.tar.gz
 BuildRequires: droid-hal
 BuildRequires: droid-hal-configs
-BuildRequires: gstreamer0.10-droidcamsrc
-BuildRequires: gstreamer0.10-omx
 BuildRequires: pkgconfig(libhardware)
 BuildRequires: mce-plugin-libhybris
 BuildRequires: ngfd-plugin-droid-vibrator
