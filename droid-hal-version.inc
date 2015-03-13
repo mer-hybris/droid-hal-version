@@ -97,7 +97,7 @@ Group: System/Libraries
 %install
 echo "Building for %{_build_flavour}"
 mkdir -p %{buildroot}/%{_datadir}/sailfish-version/packagelist.d
-RPM_PATH=rpm/droid-hal-version.spec
+RPM_PATH=${RPM_SOURCE_DIR:-rpm}/${RPM_PACKAGE_NAME:-droid-hal-version-%{rpm_device}}.spec
 for req in `rpmspec -q --buildrequires $RPM_PATH`; do
     rpm -qa $req >> %{buildroot}/%{_datadir}/sailfish-version/packagelist.d/%{name}
 done
