@@ -27,8 +27,13 @@ BuildRequires: droid-hal
 BuildRequires: droid-config
 BuildRequires: droid-config-sailfish
 BuildRequires: libhybris
-BuildRequires: mce-plugin-libhybris
 
+# LEDs for notifications
+%if 0%{?have_led:1}
+BuildRequires: mce-plugin-libhybris
+%endif
+
+# If /system has been packaged to rpm package
 %if 0%{?have_droid_bin:1}
 BuildRequires: droid-bin
 %endif
