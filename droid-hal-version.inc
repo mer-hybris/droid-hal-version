@@ -14,10 +14,12 @@
 %define _version_appendix (%{_target_cpu},%{_build_flavour})
 %endif
 
+%define _shortened_version %(echo %{version} | awk -F '+' '{print $1}')
+
 Name:    droid-hal-version-%{rpm_device}
 Version: 0.0.1
 Release: 1
-Summary: SailfishOS HW Adaptation droid version package %{version}.%{_obs_build_count} (%{_target_cpu},%{_build_flavour})
+Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{_obs_build_count} (%{_target_cpu},%{_build_flavour})
 Group:   System/Libraries
 License: BSD-3-Clause
 Source:  %{name}-%{version}.tar.gz
