@@ -66,9 +66,14 @@ BuildRequires: gstreamer0.10-omx
 %endif
 
 # Haptics
-%if 0%{?have_vibrator:1}
+%if 0%{?have_vibrator:1} && 0%{?!have_ffmemless:1}
 BuildRequires: ngfd-plugin-droid-vibrator
 BuildRequires: qt5-feedback-haptics-droid-vibrator
+%endif
+
+# Haptics with ffmemless
+%if 0%{?have_ffmemless:1} && 0%{?!have_vibrator:1}
+BuildRequires: qt5-feedback-haptics-ffmemless
 %endif
 
 # Sensors
