@@ -16,6 +16,13 @@
 
 %define _shortened_version %(echo %{version} | awk -F '+' '{print $1}')
 
+%if 0%{!?rpm_device:1}
+%define rpm_device %{device}
+%endif
+%if 0%{!?rpm_vendor:1}
+%define rpm_vendor %{vendor}
+%endif
+
 Name:    droid-hal-version-%{rpm_device}
 Version: 0.0.1
 Release: 1

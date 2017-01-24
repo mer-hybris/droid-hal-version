@@ -1,9 +1,7 @@
 # Device specific configs
 
-# rpm_device is the name of the ported device
-%define rpm_device @DEVICE@
-# rpm_vendor is used in the rpm space (the vendor doing the port)
-%define rpm_vendor @VENDOR@
+%define device @DEVICE@
+%define vendor @VENDOR@
 
 # Manufacturer and device name to be shown in UI
 %define vendor_pretty @VENDOR_PRETTY@
