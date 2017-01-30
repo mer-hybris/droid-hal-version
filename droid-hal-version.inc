@@ -62,16 +62,6 @@ BuildRequires: droid-hal-kernel-modules
 BuildRequires: pulseaudio-modules-droid
 BuildRequires: droid-config-pulseaudio-settings
 
-# Camera
-%if 0%{?have_camera:1}
-BuildRequires: gstreamer0.10-droidcamsrc
-%endif
-
-# Multimedia
-%if 0%{?have_mm_omx:1}
-BuildRequires: gstreamer0.10-omx
-%endif
-
 # Haptics
 %if 0%{?have_vibrator:1} && 0%{?!have_ffmemless:1}
 BuildRequires: ngfd-plugin-droid-vibrator
