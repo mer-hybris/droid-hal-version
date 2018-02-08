@@ -62,14 +62,20 @@ BuildRequires: droid-hal-kernel-modules
 BuildRequires: pulseaudio-modules-droid
 BuildRequires: droid-config-pulseaudio-settings
 
+# Haptics native
+%if 0%{?have_vibrator_native:1} && 0%{?!have_vibrator:1} && 0%{?!have_ffmemless:1}
+BuildRequires: ngfd-plugin-native-vibrator
+BuildRequires: qt5-feedback-haptics-native-vibrator
+%endif
+
 # Haptics
-%if 0%{?have_vibrator:1} && 0%{?!have_ffmemless:1}
+%if 0%{?!have_vibrator_native:1} && 0%{?have_vibrator:1} && 0%{?!have_ffmemless:1}
 BuildRequires: ngfd-plugin-droid-vibrator
 BuildRequires: qt5-feedback-haptics-droid-vibrator
 %endif
 
 # Haptics with ffmemless
-%if 0%{?have_ffmemless:1} && 0%{?!have_vibrator:1}
+%if 0%{?!have_vibrator_native:1} && 0%{?!have_vibrator:1} && 0%{?have_ffmemless:1}
 BuildRequires: qt5-feedback-haptics-ffmemless
 %endif
 
