@@ -92,7 +92,6 @@ SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_o
 %files
 %defattr(-,root,root,-)
 %config %{_sysconfdir}/hw-release
-%{_datadir}/sailfish-version/packagelist.d/*
 
 %package doc
 Summary: SailfishOS %{version}.%{_obs_build_count} (%{_target_cpu},%{_build_flavour})
@@ -111,13 +110,6 @@ Group: System/Libraries
 
 %install
 echo "Building for %{_build_flavour}"
-mkdir -p %{buildroot}/%{_datadir}/sailfish-version/packagelist.d
-RPM_PATH=${RPM_SOURCE_DIR:-rpm}/${RPM_PACKAGE_NAME:-droid-hal-version-%{rpm_device}}.spec
-for req in `rpmspec -q --buildrequires $RPM_PATH`; do
-    rpm -qa $req >> %{buildroot}/%{_datadir}/sailfish-version/packagelist.d/%{name}
-done
-mkdir -p %{buildroot}/%{_sysconfdir}
-
 echo Creating hw-release
 # based on http://www.freedesktop.org/software/systemd/man/os-release.html
 cat > %{buildroot}/%{_sysconfdir}/hw-release <<EOF
@@ -136,6 +128,5 @@ EOF
 cat %{buildroot}/%{_sysconfdir}/hw-release
 
 mkdir -p %{buildroot}/%{_datadir}/doc/SailfishOS
-cp %{buildroot}/%{_datadir}/sailfish-version/packagelist.d/* %{buildroot}/%{_sysconfdir}/hw-release %{buildroot}/%{_datadir}/doc/SailfishOS/
+cp %{buildroot}/%{_sysconfdir}/hw-release %{buildroot}/%{_datadir}/doc/SailfishOS/
 rpm -qa | sort > %{buildroot}/%{_datadir}/doc/SailfishOS/extended-packagelist-droid
-
