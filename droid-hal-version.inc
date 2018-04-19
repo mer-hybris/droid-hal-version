@@ -110,6 +110,7 @@ Group: System/Libraries
 
 %install
 echo "Building for %{_build_flavour}"
+mkdir -p %{buildroot}/%{_sysconfdir}
 echo Creating hw-release
 # based on http://www.freedesktop.org/software/systemd/man/os-release.html
 cat > %{buildroot}/%{_sysconfdir}/hw-release <<EOF
