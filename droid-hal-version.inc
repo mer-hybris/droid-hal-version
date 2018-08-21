@@ -9,9 +9,9 @@
 %define _obs_commit_count %(echo %{release} | awk -F . '{if (NF >= 2) print $2; else print $1 }')
 
 %if "%{_build_flavour}" == "release"
-%define _version_appendix (%{_target_cpu})
+%define _version_appendix %{nil}
 %else
-%define _version_appendix (%{_target_cpu},%{_build_flavour})
+%define _version_appendix \ (%{_build_flavour})
 %endif
 
 %define _shortened_version %(echo %{version} | awk -F '+' '{print $1}')
@@ -26,7 +26,7 @@
 Name:    droid-hal-version-%{rpm_device}
 Version: 0.0.1
 Release: 1
-Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{_obs_build_count} (%{_target_cpu},%{_build_flavour})
+Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{_obs_build_count} (%{_build_flavour})
 Group:   System/Libraries
 License: BSD-3-Clause
 Source:  %{name}-%{version}.tar.gz
@@ -87,14 +87,14 @@ BuildRequires: qt5-qpa-hwcomposer-plugin
 BuildRequires: qtscenegraph-adaptation
 
 %description
-SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_obs_build_count}) for %{_target_cpu} platform.
+SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_obs_build_count}).
 
 %files
 %defattr(-,root,root,-)
 %config %{_sysconfdir}/hw-release
 
 %package doc
-Summary: SailfishOS %{version}.%{_obs_build_count} (%{_target_cpu},%{_build_flavour})
+Summary: SailfishOS %{version}.%{_obs_build_count} (%{_build_flavour})
 Group: System/Libraries
 
 %description doc
@@ -119,9 +119,9 @@ NAME="%{vendor_pretty} %{device_pretty}"
 ID=%{rpm_device}
 MER_HA_DEVICE=%{rpm_device}
 MER_HA_VENDOR=%{rpm_vendor}
-VERSION="%{version}.%{_obs_build_count} %{_version_appendix}"
+VERSION="%{version}.%{_obs_build_count}%{_version_appendix}"
 VERSION_ID=%{version}.%{_obs_build_count}
-PRETTY_NAME="$DEVICE %{version}.%{_obs_build_count} %{_version_appendix}"
+PRETTY_NAME="$DEVICE %{version}.%{_obs_build_count}%{_version_appendix}"
 SAILFISH_BUILD=%{_obs_build_count}
 SAILFISH_FLAVOUR=%{_build_flavour}
 HOME_URL="https://sailfishos.org/"
