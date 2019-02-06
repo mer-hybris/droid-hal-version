@@ -35,7 +35,9 @@ Source:  %{name}-%{version}.tar.gz
 BuildRequires: droid-hal
 BuildRequires: droid-config
 BuildRequires: droid-config-sailfish
+%if 0%{!?native_build:1}
 BuildRequires: libhybris
+%endif
 
 # LEDs for notifications
 %if 0%{?have_led:1}
@@ -80,11 +82,15 @@ BuildRequires: qt5-feedback-haptics-ffmemless
 %endif
 
 # Sensors
+%if 0%{!?native_build:1}
 BuildRequires: hybris-libsensorfw-qt5
+%endif
 
 # Graphics
+%if 0%{!?native_build:1}
 BuildRequires: qt5-qpa-hwcomposer-plugin
 BuildRequires: qtscenegraph-adaptation
+%endif
 
 %description
 SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_obs_build_count}).
