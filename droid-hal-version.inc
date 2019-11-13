@@ -49,8 +49,10 @@ BuildRequires: droid-bin
 
 # Kernel & Boot
 BuildRequires: droid-hal-kernel
+%if 0%{?_obs_build_project:1}
 BuildRequires: droid-hal-img-boot
 BuildRequires: droid-hal-img-recovery
+%endif
 BuildRequires: droid-config-preinit-plugins
 
 # Kernel modules
