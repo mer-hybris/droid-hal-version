@@ -25,7 +25,12 @@
 
 Name:    droid-hal-version-%{rpm_device}
 Version: 0.0.1
+%if 0%{?_obs_build_project:1}
 Release: 1
+%else
+%define rel_date %(date +'%%Y%%m%%d%%H%%M')
+Release: %{rel_date}
+%endif
 Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{_obs_build_count} (%{_build_flavour})
 Group:   System/Libraries
 License: BSD-3-Clause
