@@ -33,7 +33,7 @@ Release: %{rel_date}
 %endif
 Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{_obs_build_count} (%{_build_flavour})
 Group:   System/Libraries
-License: BSD-3-Clause
+License: BSD
 Source:  %{name}-%{version}.tar.gz
 
 # Generic dependencies
