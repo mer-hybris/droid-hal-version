@@ -35,6 +35,9 @@ Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{
 Group:   System/Libraries
 License: BSD
 Source:  %{name}-%{version}.tar.gz
+# For devices that were last reflashed before switching from patterns to
+# meta-packages, otherwise they will miss any patterns changes in the future:
+Requires: patterns-sailfish-device-configuration-%{rpm_device}
 
 # Generic dependencies
 BuildRequires: droid-hal
