@@ -40,7 +40,9 @@ Source:  %{name}-%{version}.tar.gz
 BuildRequires: droid-hal
 BuildRequires: droid-config
 BuildRequires: droid-config-sailfish
+%if 0%{!?native_build:1}
 BuildRequires: libhybris
+%endif
 
 # LEDs for notifications
 %if 0%{?have_led:1}
@@ -70,28 +72,32 @@ BuildRequires: pulseaudio-modules-droid
 BuildRequires: droid-config-pulseaudio-settings
 
 # Haptics native
-%if 0%{?have_vibrator_native:1} && 0%{?!have_vibrator:1} && 0%{?!have_ffmemless:1}
+%if 0%{?have_vibrator_native:1} && 0%{!?have_vibrator:1} && 0%{!?have_ffmemless:1}
 BuildRequires: ngfd-plugin-native-vibrator
 BuildRequires: qt5-feedback-haptics-native-vibrator
 %endif
 
 # Haptics
-%if 0%{?!have_vibrator_native:1} && 0%{?have_vibrator:1} && 0%{?!have_ffmemless:1}
+%if 0%{!?have_vibrator_native:1} && 0%{?have_vibrator:1} && 0%{!?have_ffmemless:1}
 BuildRequires: ngfd-plugin-droid-vibrator
 BuildRequires: qt5-feedback-haptics-droid-vibrator
 %endif
 
 # Haptics with ffmemless
-%if 0%{?!have_vibrator_native:1} && 0%{?!have_vibrator:1} && 0%{?have_ffmemless:1}
+%if 0%{!?have_vibrator_native:1} && 0%{!?have_vibrator:1} && 0%{?have_ffmemless:1}
 BuildRequires: qt5-feedback-haptics-ffmemless
 %endif
 
 # Sensors
+%if 0%{!?native_build:1}
 BuildRequires: hybris-libsensorfw-qt5
+%endif
 
 # Graphics
+%if 0%{!?native_build:1}
 BuildRequires: qt5-qpa-hwcomposer-plugin
 BuildRequires: qtscenegraph-adaptation
+%endif
 
 %description
 SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_obs_build_count}).
