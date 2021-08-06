@@ -1,5 +1,5 @@
 %if 0%{?_obs_build_project:1}
-%define _build_flavour %(echo %{_obs_build_project} | awk -F : '{if ($NF == "testing" || $NF == "release") print $NF; else if ($NF ~ /[0-9]\.[0-9]\.[0-9]/ && NF == 3) print strdevel; else if (NF == 2) print strdevel; else print strunknown}' strdevel=devel strunknown=unknown)
+%define _build_flavour %{?qa_stage_name}%{!?qa_stage_name:unknown}
 %else
 %define _build_flavour unknown
 %endif
