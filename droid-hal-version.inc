@@ -1,5 +1,5 @@
 %if 0%{?_obs_build_project:1}
-%define _build_flavour %(echo %{_obs_build_project} | awk -F : '{if ($NF == "testing" || $NF == "release") print $NF; else if ($NF ~ /[0-9]\.[0-9]\.[0-9]/ && NF == 3) print strdevel; else if (NF == 2) print strdevel; else print strunknown}' strdevel=devel strunknown=unknown)
+%define _build_flavour %{?qa_stage_name}%{!?qa_stage_name:unknown}
 %else
 %define _build_flavour unknown
 %endif
@@ -137,7 +137,7 @@ MER_HA_DEVICE=%{rpm_device}
 MER_HA_VENDOR=%{rpm_vendor}
 VERSION="%{version}.%{_obs_build_count}%{_version_appendix}"
 VERSION_ID=%{version}.%{_obs_build_count}
-PRETTY_NAME="$DEVICE %{version}.%{_obs_build_count}%{_version_appendix}"
+PRETTY_NAME="%{device_pretty} %{version}.%{_obs_build_count}%{_version_appendix}"
 SAILFISH_BUILD=%{_obs_build_count}
 SAILFISH_FLAVOUR=%{_build_flavour}
 HOME_URL="https://sailfishos.org/"
