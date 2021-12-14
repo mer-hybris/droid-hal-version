@@ -23,6 +23,10 @@
 %define rpm_vendor %{vendor}
 %endif
 
+%if 0%{!?home_url:1}
+%define home_url "https://sailfishos.org/"
+%endif
+
 Name:    droid-hal-version-%{rpm_device}
 Version: 0.0.1
 %if 0%{?_obs_build_project:1}
@@ -140,7 +144,7 @@ VERSION_ID=%{version}.%{_obs_build_count}
 PRETTY_NAME="%{device_pretty} %{version}.%{_obs_build_count}%{_version_appendix}"
 SAILFISH_BUILD=%{_obs_build_count}
 SAILFISH_FLAVOUR=%{_build_flavour}
-HOME_URL="https://sailfishos.org/"
+HOME_URL=%{home_url}
 EOF
 cat %{buildroot}/%{_sysconfdir}/hw-release
 
