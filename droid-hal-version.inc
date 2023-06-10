@@ -75,7 +75,9 @@ BuildRequires: droid-hal-kernel-modules
 %endif
 
 # Audio
+%if 0%{!?native_build:1}
 BuildRequires: pulseaudio-modules-droid
+%endif
 BuildRequires: droid-config-pulseaudio-settings
 
 # Haptics native
