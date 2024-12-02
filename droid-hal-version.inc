@@ -108,7 +108,8 @@ SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_o
 
 %files
 %defattr(-,root,root,-)
-%config %{_sysconfdir}/hw-release
+%{_prefix}/lib/hw-release
+%{_sysconfdir}/hw-release
 
 %package doc
 Summary: SailfishOS %{version}.%{_obs_build_count} (%{_build_flavour})
@@ -127,10 +128,11 @@ Group: System/Libraries
 
 %install
 echo "Building for %{_build_flavour}"
+mkdir -p %{buildroot}/%{_prefix}/lib
 mkdir -p %{buildroot}/%{_sysconfdir}
 echo Creating hw-release
 # based on http://www.freedesktop.org/software/systemd/man/os-release.html
-cat > %{buildroot}/%{_sysconfdir}/hw-release <<EOF
+cat > %{buildroot}/%{_prefix}/lib/hw-release <<EOF
 # This file is copied as hw-release (analogous to os-release)
 NAME="%{vendor_pretty} %{device_pretty}"
 ID=%{rpm_device}
@@ -143,7 +145,8 @@ SAILFISH_BUILD=%{_obs_build_count}
 SAILFISH_FLAVOUR=%{_build_flavour}
 HOME_URL=%{home_url}
 EOF
-cat %{buildroot}/%{_sysconfdir}/hw-release
+cat %{buildroot}/%{_prefix}/lib/hw-release
+ln -s %{_prefix}/lib/hw-release %{buildroot}/%{_sysconfdir}/hw-release
 
 mkdir -p %{buildroot}/%{_datadir}/doc/SailfishOS
 cp %{buildroot}/%{_sysconfdir}/hw-release %{buildroot}/%{_datadir}/doc/SailfishOS/
