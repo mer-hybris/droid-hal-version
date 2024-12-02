@@ -148,7 +148,7 @@ SAILFISH_FLAVOUR=%{_build_flavour}
 HOME_URL=%{home_url}
 EOF
 cat %{buildroot}/%{_prefix}/lib/hw-release
-ln -s %{_prefix}/lib/hw-release %{buildroot}/%{_sysconfdir}/hw-release
+ln -s ../%{_prefix}/lib/hw-release %{buildroot}/%{_sysconfdir}/hw-release
 
 mkdir -p %{buildroot}/%{_datadir}/doc/SailfishOS
 cp %{buildroot}/%{_sysconfdir}/hw-release %{buildroot}/%{_datadir}/doc/SailfishOS/
