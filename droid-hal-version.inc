@@ -44,7 +44,9 @@ Source:  %{name}-%{version}.tar.gz
 Requires: patterns-sailfish-device-configuration-%{rpm_device}
 
 # Generic dependencies
+%if 0%{!?native_build:1}
 BuildRequires: droid-hal
+%endif
 BuildRequires: droid-config
 BuildRequires: droid-config-sailfish
 %if 0%{!?native_build:1}
