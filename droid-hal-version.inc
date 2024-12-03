@@ -36,7 +36,6 @@ Release: 1
 Release: %{rel_date}
 %endif
 Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{_obs_build_count} (%{_build_flavour})
-Group:   System/Libraries
 License: BSD
 Source:  %{name}-%{version}.tar.gz
 # For devices that were last reflashed before switching from patterns to
@@ -109,19 +108,16 @@ BuildRequires: qtscenegraph-adaptation
 SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_obs_build_count}).
 
 %files
-%defattr(-,root,root,-)
 %{_prefix}/lib/hw-release
 %{_sysconfdir}/hw-release
 
 %package doc
 Summary: SailfishOS %{version}.%{_obs_build_count} (%{_build_flavour})
-Group: System/Libraries
 
 %description doc
 %{summary}.
 
 %files doc
-%defattr(-,root,root,-)
 %doc %{_datadir}/doc/SailfishOS/*
 
 %prep
