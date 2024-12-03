@@ -36,7 +36,6 @@ Release: 1
 Release: %{rel_date}
 %endif
 Summary: SailfishOS HW Adaptation droid version package %{_shortened_version}.%{_obs_build_count} (%{_build_flavour})
-Group:   System/Libraries
 License: BSD
 Source:  %{name}-%{version}.tar.gz
 # For devices that were last reflashed before switching from patterns to
@@ -64,17 +63,16 @@ BuildRequires: droid-bin
 %endif
 
 # Kernel & Boot
-BuildRequires: droid-hal-kernel
 %if 0%{?_obs_build_project:1}
 BuildRequires: droid-hal-img-boot
 BuildRequires: droid-hal-img-recovery
-%endif
-BuildRequires: droid-config-preinit-plugins
-
-# Kernel modules
+%else
+BuildRequires: droid-hal-kernel
 %if 0%{?have_kernel_modules:1}
 BuildRequires: droid-hal-kernel-modules
 %endif
+%endif
+BuildRequires: droid-config-preinit-plugins
 
 # Audio
 %if 0%{!?native_build:1}
@@ -109,19 +107,16 @@ BuildRequires: qtscenegraph-adaptation
 SailfishOS HW Adaptation %{rpm_device} version/umbrella package (%{version}.%{_obs_build_count}).
 
 %files
-%defattr(-,root,root,-)
 %{_prefix}/lib/hw-release
 %{_sysconfdir}/hw-release
 
 %package doc
 Summary: SailfishOS %{version}.%{_obs_build_count} (%{_build_flavour})
-Group: System/Libraries
 
 %description doc
 %{summary}.
 
 %files doc
-%defattr(-,root,root,-)
 %doc %{_datadir}/doc/SailfishOS/*
 
 %prep
