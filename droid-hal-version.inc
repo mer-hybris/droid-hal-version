@@ -63,17 +63,16 @@ BuildRequires: droid-bin
 %endif
 
 # Kernel & Boot
-BuildRequires: droid-hal-kernel
 %if 0%{?_obs_build_project:1}
 BuildRequires: droid-hal-img-boot
 BuildRequires: droid-hal-img-recovery
-%endif
-BuildRequires: droid-config-preinit-plugins
-
-# Kernel modules
+%else
+BuildRequires: droid-hal-kernel
 %if 0%{?have_kernel_modules:1}
 BuildRequires: droid-hal-kernel-modules
 %endif
+%endif
+BuildRequires: droid-config-preinit-plugins
 
 # Audio
 %if 0%{!?native_build:1}
