@@ -125,11 +125,11 @@ Summary: SailfishOS %{version}.%{_obs_build_count} (%{_build_flavour})
 
 %install
 echo "Building for %{_build_flavour}"
-mkdir -p %{buildroot}/%{_prefix}/lib
-mkdir -p %{buildroot}/%{_sysconfdir}
+mkdir -p %{buildroot}%{_prefix}/lib
+mkdir -p %{buildroot}%{_sysconfdir}
 echo Creating hw-release
 # based on http://www.freedesktop.org/software/systemd/man/os-release.html
-cat > %{buildroot}/%{_prefix}/lib/hw-release <<EOF
+cat > %{buildroot}%{_prefix}/lib/hw-release <<EOF
 # This file is copied as hw-release (analogous to os-release)
 NAME="%{vendor_pretty} %{device_pretty}"
 ID=%{rpm_device}
@@ -142,9 +142,9 @@ SAILFISH_BUILD=%{_obs_build_count}
 SAILFISH_FLAVOUR=%{_build_flavour}
 HOME_URL=%{home_url}
 EOF
-cat %{buildroot}/%{_prefix}/lib/hw-release
-ln -s ../%{_prefix}/lib/hw-release %{buildroot}/%{_sysconfdir}/hw-release
+cat %{buildroot}%{_prefix}/lib/hw-release
+ln -s ..%{_prefix}/lib/hw-release %{buildroot}%{_sysconfdir}/hw-release
 
-mkdir -p %{buildroot}/%{_datadir}/doc/SailfishOS
-cp %{buildroot}/%{_sysconfdir}/hw-release %{buildroot}/%{_datadir}/doc/SailfishOS/
-rpm -qa | sort > %{buildroot}/%{_datadir}/doc/SailfishOS/extended-packagelist-droid
+mkdir -p %{buildroot}%{_datadir}/doc/SailfishOS
+cp %{buildroot}%{_sysconfdir}/hw-release %{buildroot}%{_datadir}/doc/SailfishOS/
+rpm -qa | sort > %{buildroot}%{_datadir}/doc/SailfishOS/extended-packagelist-droid
